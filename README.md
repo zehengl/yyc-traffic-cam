@@ -14,6 +14,8 @@ A demo to detect vehicles in traffic cam
 
 ## Install
 
+> Remove `--extra-index-url https://download.pytorch.org/whl/cu113` in the `requirements.txt` file, if you don't have GPU/CUDA set up.
+
     python -m venv .venv
     .\.venv\Scripts\activate
     python -m pip install -U pip
@@ -25,9 +27,22 @@ It will also install `jupyterlab` for notebook experience.
 
 ## Usage
 
+### Crawl some traffic cam images
+
+    python crawl.py
+
+### Remove corrupted image files
+
+    python clean.py
+
+### Detect vehicles
+
+    python detect.py
+
 ## Docs
 
-    mkdocs build
     mkdocs serve
 
 ## Credits
+
+- [Logo](https://www.iconfinder.com/icons/5172951/camera_cctv_internet_secure_security_surveillance_technology_icon) by [Kmg Design](https://www.iconfinder.com/kmgdesignid)
