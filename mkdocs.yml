@@ -1,0 +1,15 @@
+site_name: yyc-traffic-cam
+nav:
+  - Home: index.md
+  - About: about.md
+theme:
+  name: material
+  font:
+    text: Roboto
+  features:
+    - header.autohide
+plugins:
+  - search
+  - tags
+  - git-revision-date-localized:
+      type: date
