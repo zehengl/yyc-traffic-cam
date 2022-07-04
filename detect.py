@@ -15,6 +15,13 @@ model = torch.hub.load("ultralytics/yolov5", "yolov5s")
 model.classes = [2, 3, 5, 7]
 
 # %%
+def batch(iterable, n=1):
+    l = len(iterable)
+    for ndx in range(0, l, n):
+        yield iterable[ndx : min(ndx + n, l)]
+
+
+# %%
 parser = ArgumentParser(description="detect.py")
 parser.add_argument(
     "--save_runs",
@@ -22,21 +29,33 @@ parser.add_argument(
     default=False,
     help="export processed images in files",
 )
+parser.add_argument(
+    "--batch_size",
+    type=int,
+    default=100,
+    help="batch size",
+)
 args = parser.parse_known_args()[0]
 save_runs = args.save_runs
+batch_size = args.batch_size
 
 locations = list(Path("images").glob("*/"))
 
 for loc in tqdm(locations):
     imgs = sorted(list(loc.glob("*.jpg")))
-    results = model(imgs)
+    timestamps, counts = [], []
+    for batch_imgs in batch(imgs, batch_size):
+        results = model(batch_imgs)
 
-    if save_runs:
-        results.save()
+        if save_runs:
+            results.save()
 
-    timestamps = [f.split(".")[0].split("-")[1:] for f in results.files]
-    timestamps = [datetime(*[int(i) for i in t]) for t in timestamps]
-    counts = [d.shape[0] for d in results.pandas().xyxy]
+        _timestamps = [f.split(".")[0].split("-")[1:] for f in results.files]
+        _timestamps = [datetime(*[int(i) for i in t]) for t in _timestamps]
+        _counts = [d.shape[0] for d in results.pandas().xyxy]
+
+        timestamps.extend(_timestamps)
+        counts.extend(_counts)
 
     df = pd.DataFrame(dict(ds=timestamps, count=counts))
     df = df.groupby(df["ds"].dt.hour).mean().reset_index()
