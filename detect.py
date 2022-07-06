@@ -58,14 +58,25 @@ for loc in tqdm(locations):
         counts.extend(_counts)
 
     df = pd.DataFrame(dict(ds=timestamps, count=counts))
-    df = df.groupby(df["ds"].dt.hour).mean().reset_index()
+    df["hour"] = df["ds"].dt.hour
+    df["weekday"] = df["ds"].dt.day_name()
+
     fig = plt.figure(figsize=(10, 6))
-    ax = sns.scatterplot(data=df, x="ds", y="count")
+    ax = sns.boxplot(data=df, x="hour", y="count")
     fig.savefig(
-        output / f"{loc.stem}.summary.png",
+        output / f"{loc.stem}.summary.hour.png",
         dpi=600,
         bbox_inches="tight",
     )
+
+    fig = plt.figure(figsize=(10, 6))
+    ax = sns.boxplot(data=df, x="weekday", y="count")
+    fig.savefig(
+        output / f"{loc.stem}.summary.weekday.png",
+        dpi=600,
+        bbox_inches="tight",
+    )
+
     df.to_csv(
         output / f"{loc.stem}.summary.csv",
         index=False,
