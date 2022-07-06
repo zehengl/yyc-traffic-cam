@@ -31,10 +31,9 @@ print(f"Found {new_files} new file{'s' if new_files>1 else ''}")
 if bad_files:
     for f in tqdm(bad_files, desc="Removing invalid images"):
         f.unlink()
-    print(f"Removed {len(bad_files)} file{'s' if len(bad_files)>1 else ''}")
 
 # %%
-for loc in tqdm(locations, desc="Cacheing clean images"):
+for loc in tqdm(locations, desc="Caching clean images"):
     imgs = sorted(list(loc.glob("*.jpg")))
     with open(loc / "clean.cache", "wb") as f:
         pickle.dump(imgs, f)
