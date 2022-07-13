@@ -12,6 +12,7 @@ images.mkdir(exist_ok=True)
 url = "https://data.calgary.ca/resource/k7p9-kppz.json"
 locations = requests.get(url).json()
 camera_urls = [d["camera_url"]["url"] for d in locations]
+camera_names = [d["camera_location"] for d in locations]
 
 # %%
 parser = ArgumentParser(description="crawl.py")
@@ -25,7 +26,9 @@ args = parser.parse_known_args()[0]
 wait_time = args.wait_time
 
 while True:
-    for camera_url in tqdm(camera_urls, desc="Getting images"):
+    for camera_url, camera_name in tqdm(
+        list(zip(camera_urls, camera_names)), desc="Getting images"
+    ):
         r = requests.get(camera_url)
         c = Path(camera_url)
 
@@ -42,6 +45,11 @@ while True:
 
         with open(images / loc / name, "wb") as f:
             f.write(r.content)
+
+        cname = images / loc / "cname.txt"
+        if not cname.exists():
+            with open(cname, "w") as f:
+                f.write(camera_name)
 
     print(
         f"Waiting for new images in {wait_time} minute{'s' if wait_time >1 else ''}..."
