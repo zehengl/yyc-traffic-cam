@@ -61,21 +61,33 @@ for loc in tqdm(locations):
     df["hour"] = df["ds"].dt.hour
     df["weekday"] = df["ds"].dt.day_name()
 
+    cname = loc / "cname.txt"
+    if cname.exists():
+        title = open(cname).read()
+    else:
+        title = None
+
     fig = plt.figure(figsize=(10, 6))
     ax = sns.boxplot(data=df, x="hour", y="count")
+    if title:
+        ax.set_title(title)
     fig.savefig(
         output / f"{loc.stem}.summary.hour.png",
         dpi=600,
         bbox_inches="tight",
     )
+    plt.close(fig)
 
     fig = plt.figure(figsize=(10, 6))
     ax = sns.boxplot(data=df, x="weekday", y="count")
+    if title:
+        ax.set_title(title)
     fig.savefig(
         output / f"{loc.stem}.summary.weekday.png",
         dpi=600,
         bbox_inches="tight",
     )
+    plt.close(fig)
 
     df.to_csv(
         output / f"{loc.stem}.summary.csv",
