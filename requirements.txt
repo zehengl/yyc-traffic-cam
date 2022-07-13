@@ -1,4 +1,4 @@
---extra-index-url https://download.pytorch.org/whl/cu113
+--extra-index-url https://download.pytorch.org/whl/cu116
 opencv-python==4.6.0.66
 pandas==1.4.3
 protobuf==3.20.1

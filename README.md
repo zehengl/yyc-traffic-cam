@@ -14,7 +14,7 @@ A demo to detect vehicles in traffic cam
 
 ## Install
 
-> Remove `--extra-index-url https://download.pytorch.org/whl/cu113` in the `requirements.txt` file, if you don't have GPU/CUDA set up.
+> Remove `--extra-index-url https://download.pytorch.org/whl/cu116` in the `requirements.txt` file, if you don't have GPU/CUDA set up.
 
     python -m venv .venv
     .\.venv\Scripts\activate
