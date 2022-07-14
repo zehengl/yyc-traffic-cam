@@ -7,12 +7,12 @@ from time import sleep
 import requests
 from tqdm import tqdm
 
-images = Path("images")
-images.mkdir(exist_ok=True)
+
+# %%
 url = "https://data.calgary.ca/resource/k7p9-kppz.json"
-locations = requests.get(url).json()
-camera_urls = [d["camera_url"]["url"] for d in locations]
-camera_names = [d["camera_location"] for d in locations]
+cameras = [
+    (d["camera_location"], d["camera_url"]["url"]) for d in requests.get(url).json()
+]
 
 # %%
 parser = ArgumentParser(description="crawl.py")
@@ -22,13 +22,28 @@ parser.add_argument(
     default=5,
     help="wait time (in minutes)",
 )
+parser.add_argument(
+    "--num_cycles",
+    type=int,
+    help="number of crawling cycles",
+)
+parser.add_argument(
+    "--data",
+    type=str,
+    default="images",
+    help="location of crawled images",
+)
 args = parser.parse_known_args()[0]
 wait_time = args.wait_time
+images_data = args.data
+num_cycles = args.num_cycles
 
+images = Path(images_data)
+images.mkdir(exist_ok=True)
+
+count = 0
 while True:
-    for camera_url, camera_name in tqdm(
-        list(zip(camera_urls, camera_names)), desc="Getting images"
-    ):
+    for camera_name, camera_url in tqdm(cameras, desc="Getting images"):
         r = requests.get(camera_url)
         c = Path(camera_url)
 
@@ -50,6 +65,10 @@ while True:
         if not cname.exists():
             with open(cname, "w") as f:
                 f.write(camera_name)
+
+    count += 1
+    if num_cycles and count >= num_cycles:
+        break
 
     print(
         f"Waiting for new images in {wait_time} minute{'s' if wait_time >1 else ''}..."

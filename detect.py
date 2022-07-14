@@ -9,8 +9,7 @@ import seaborn as sns
 import torch
 from tqdm import tqdm
 
-output = Path("output")
-output.mkdir(exist_ok=True)
+
 model = torch.hub.load("ultralytics/yolov5", "yolov5s")
 model.classes = [2, 3, 5, 7]
 
@@ -35,11 +34,27 @@ parser.add_argument(
     default=100,
     help="batch size",
 )
+parser.add_argument(
+    "--data",
+    type=str,
+    default="images",
+    help="location of crawled images",
+)
+parser.add_argument(
+    "--output",
+    type=str,
+    default="output",
+    help="location of output",
+)
 args = parser.parse_known_args()[0]
 save_runs = args.save_runs
 batch_size = args.batch_size
+images_data = args.data
+output = args.output
 
-locations = list(Path("images").glob("*/"))
+output = Path(output)
+output.mkdir(exist_ok=True)
+locations = list(Path(images_data).glob("*/"))
 
 for loc in tqdm(locations):
     imgs = sorted(list(loc.glob("*.jpg")))
