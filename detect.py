@@ -73,7 +73,7 @@ for loc in tqdm(locations):
             results = model(batch_imgs)
 
             if save_runs:
-                results.save()
+                results.save(save_dir=f"runs/detect/{loc.stem}")
 
             _timestamps = [f.split(".")[0].split("-")[1:] for f in results.files]
             _timestamps = [datetime(*[int(i) for i in t]) for t in _timestamps]
