@@ -45,4 +45,7 @@ It will also install `jupyterlab` for notebook experience.
 
 ## Credits
 
-- [Logo](https://www.iconfinder.com/icons/5172951/camera_cctv_internet_secure_security_surveillance_technology_icon) by [Kmg Design](https://www.iconfinder.com/kmgdesignid)
+- [Logo][1] by [Kmg Design][2]
+
+[1]: https://www.iconfinder.com/icons/5172951/camera_cctv_internet_secure_security_surveillance_technology_icon
+[2]: https://www.iconfinder.com/kmgdesignid
