@@ -1,8 +1,6 @@
 -r requirements.txt
+-r requirements-docs.txt
 black==22.10.0
 jupyterlab==3.5.0
-mkdocs-git-revision-date-localized-plugin==1.1.0
-mkdocs-material==8.5.7
-mkdocs==1.4.1
 pip-check-updates==0.18.0
 pylint==2.15.5

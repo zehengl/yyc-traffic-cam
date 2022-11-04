@@ -1,15 +1,37 @@
 site_name: yyc-traffic-cam
 nav:
   - Home: index.md
-  - About: about.md
 theme:
   name: material
+  favicon: https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_Camera_cctv_technology_secure_surveillance-512.png
+  logo: https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_Camera_cctv_technology_secure_surveillance-512.png
   font:
     text: Roboto
+  palette:
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
   features:
     - header.autohide
+repo_name: zehengl/yyc-traffic-cam
+repo_url: https://github.com/zehengl/yyc-traffic-cam
 plugins:
   - search
   - tags
+  - minify:
+      minify_html: true
   - git-revision-date-localized:
       type: date
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zehengl
