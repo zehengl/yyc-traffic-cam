@@ -6,19 +6,19 @@ We can view City's up-to-minute traffic camera images on major routes and inters
 
 Here's an example of Macleod Trail at Glenmore Trail.
 
-![](example-input.jpg)
+![Example Shot from Traffic Camera](example-input.jpg)
 
 ## Object Detection
 
 With a little help from YOLOv5, we can find all the vehicles from the image.
 
-![](example-output.jpg)
+![Vehicle Detection](example-output.jpg)
 
 ## Statistics
 
 When we set up a cron job to fetch images from that camera location periodically over a certain time,
 we can better understand the traffic patterns.
 
-![](example-summary-hour.png)
+![Summary by hour of day](example-summary-hour.png)
 
-![](example-summary-weekday.png)
+![Summary by day of week](example-summary-weekday.png)
