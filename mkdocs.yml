@@ -33,6 +33,9 @@ plugins:
       minify_html: true
   - git-revision-date-localized:
       type: date
+markdown_extensions:
+  - attr_list
+  - md_in_html
 extra:
   social:
     - icon: fontawesome/brands/github

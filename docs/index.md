@@ -1,3 +1,7 @@
+<figure markdown>
+![Logo](https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_Camera_cctv_technology_secure_surveillance-512.png){ width="100" }
+</figure>
+
 # yyc-traffic-cam
 
 We can view City's up-to-minute traffic camera images on major routes and intersections with the links published at [Open Data portal](https://data.calgary.ca/Transportation-Transit/Traffic-Cameras/k7p9-kppz).
