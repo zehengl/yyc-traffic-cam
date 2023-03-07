@@ -8,21 +8,36 @@ We can view City's up-to-minute traffic camera images on major routes and inters
 
 ## Camera Image
 
-Here's an example of Macleod Trail at Glenmore Trail.
+Here are examples of
 
-![Example Shot from Traffic Camera](example-input.jpg)
+- Macleod Trail at Glenmore Trail
+- Anderson Road at 24 St SW
+
+<figure markdown>
+![Example Shot 1 from Traffic Camera](example-input1.jpg){ width="48%", align="left" }
+![Example Shot 2 from Traffic Camera](example-input2.jpg){ width="48%"}
+</figure>
 
 ## Object Detection
 
 With a little help from YOLOv5, we can find all the vehicles from the image.
 
-![Vehicle Detection](example-output.jpg)
+<figure markdown>
+![Vehicle Detection 1](example-output1.jpg){ width="48%", align="left" }
+![Vehicle Detection 2](example-output2.jpg){ width="48%"}
+</figure>
 
 ## Statistics
 
 When we set up a cron job to fetch images from that camera location periodically over a certain time,
 we can better understand the traffic patterns.
 
-![Summary by hour of day](example-summary-hour.png)
+<figure markdown>
+![Summary1 by hour of day](example-summary-hour1.png){ width="48%", align="left" }
+![Summary1 by day of week](example-summary-weekday1.png){ width="48%"}
+</figure>
 
-![Summary by day of week](example-summary-weekday.png)
+<figure markdown>
+![Summary2 by hour of day](example-summary-hour2.png){ width="48%", align="left" }
+![Summary2 by day of week](example-summary-weekday2.png){ width="48%"}
+</figure>
