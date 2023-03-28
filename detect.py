@@ -1,4 +1,6 @@
 # %%
+import logging
+import os
 from argparse import ArgumentParser
 from datetime import datetime
 from pathlib import Path
@@ -6,12 +8,12 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import torch
 from tqdm import tqdm
+from ultralytics import YOLO
 
+logging.getLogger("ultralytics").setLevel(logging.ERROR)
+model = YOLO("yolov8s.pt")
 
-model = torch.hub.load("ultralytics/yolov5", "yolov5s")
-model.classes = [2, 3, 5, 7]
 
 # %%
 def batch(iterable, n=1):
@@ -63,6 +65,7 @@ output = Path(output)
 output.mkdir(exist_ok=True)
 locations = list(Path(images_data).glob("*/"))
 
+# %%
 for loc in tqdm(locations):
     summary_file = output / f"{loc.stem}.summary.csv"
 
@@ -70,14 +73,20 @@ for loc in tqdm(locations):
         imgs = sorted(list(loc.glob("*.jpg")))
         timestamps, counts = [], []
         for batch_imgs in batch(imgs, batch_size):
-            results = model(batch_imgs)
+            results = model(
+                batch_imgs,
+                classes=[2, 3, 5, 7],
+                save=save_runs,
+                exist_ok=True,
+                project=output,
+                name=loc.stem,
+            )
 
-            if save_runs:
-                results.save(save_dir=f"runs/detect/{loc.stem}")
-
-            _timestamps = [f.split(".")[0].split("-")[1:] for f in results.files]
+            _timestamps = [
+                os.path.basename(r.path).split(".")[0].split("-")[1:] for r in results
+            ]
             _timestamps = [datetime(*[int(i) for i in t]) for t in _timestamps]
-            _counts = [d.shape[0] for d in results.pandas().xyxy]
+            _counts = [len(r.boxes) for r in results]
 
             timestamps.extend(_timestamps)
             counts.extend(_counts)
@@ -133,6 +142,3 @@ for loc in tqdm(locations):
         bbox_inches="tight",
     )
     plt.close(fig)
-
-
-# %%
