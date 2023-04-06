@@ -22,7 +22,7 @@ theme:
         name: Switch to light mode
   features:
     - header.autohide
-repo_name: zehengl/yyc-traffic-cam
+repo_name: yyc-traffic-cam
 repo_url: https://github.com/zehengl/yyc-traffic-cam
 plugins:
   - search
