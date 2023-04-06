@@ -12,7 +12,6 @@ from tqdm import tqdm
 from ultralytics import YOLO
 
 logging.getLogger("ultralytics").setLevel(logging.ERROR)
-model = YOLO("yolov8s.pt")
 
 
 # %%
@@ -73,6 +72,7 @@ for loc in tqdm(locations):
         imgs = sorted(list(loc.glob("*.jpg")))
         timestamps, counts = [], []
         for batch_imgs in batch(imgs, batch_size):
+            model = YOLO("yolov8s.pt")
             results = model(
                 batch_imgs,
                 classes=[2, 3, 5, 7],
