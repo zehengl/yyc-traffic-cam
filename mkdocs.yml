@@ -22,13 +22,14 @@ theme:
         name: Switch to light mode
   features:
     - header.autohide
+    - navigation.top
 repo_name: yyc-traffic-cam
 repo_url: https://github.com/zehengl/yyc-traffic-cam
 plugins:
   - search
   - tags
   - glightbox:
-      auto_caption: True
+      auto_caption: true
   - minify:
       minify_html: true
   - git-revision-date-localized:
