@@ -2,7 +2,7 @@ opencv-python==4.7.0.72
 pandas==2.0.1
 requests==2.30.0
 seaborn==0.12.2
-torch==2.0.0
-torchvision==0.15.1
+torch==2.0.1
+torchvision==0.15.2
 tqdm==4.65.0
-ultralytics==8.0.94
+ultralytics==8.0.101
