@@ -6,12 +6,12 @@
 
 We can view City's up-to-minute traffic camera images on major routes and intersections with the links published at [Open Data portal](https://data.calgary.ca/Transportation-Transit/Traffic-Cameras/k7p9-kppz).
 
-## Camera Image
+## Camera Images
 
 Here are examples of
 
-- Macleod Trail at Glenmore Trail
-- Anderson Road at 24 St SW
+- Macleod Trail at Glenmore Trail [:material-camera-marker:](https://trafficcam.calgary.ca/loc0.jpg){target=\_blank}
+- Anderson Road at 24 St SW [:material-camera-marker:](https://trafficcam.calgary.ca/loc104.jpg){target=\_blank}
 
 <figure markdown>
 ![Example Shot 1 from Traffic Camera](example-input1.jpg){ width="48%", align="left" }
@@ -20,7 +20,7 @@ Here are examples of
 
 ## Object Detection
 
-With a little help from YOLOv5, we can find all the vehicles from the image.
+With a little help from ~~YOLOv5~~ YOLOv8, we can find all the vehicles from the images.
 
 <figure markdown>
 ![Vehicle Detection 1](example-output1.jpg){ width="48%", align="left" }

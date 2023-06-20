@@ -38,6 +38,10 @@ plugins:
 markdown_extensions:
   - attr_list
   - md_in_html
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 extra:
   social:
     - icon: fontawesome/brands/github
