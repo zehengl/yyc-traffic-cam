@@ -5,7 +5,7 @@
 # yyc-traffic-cam
 
 ![coding_style](https://img.shields.io/badge/code%20style-black-000000.svg)
-[![pages-build-deployment](https://github.com/zehengl/yyc-traffic-cam/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/zehengl/yyc-traffic-cam/actions/workflows/pages/pages-build-deployment)
+[![GitHub Pages](https://github.com/zehengl/yyc-traffic-cam/actions/workflows/gh-deploy.yml/badge.svg)](https://github.com/zehengl/yyc-traffic-cam/actions/workflows/gh-deploy.yml)
 
 A demo to detect vehicles in traffic cam
 
