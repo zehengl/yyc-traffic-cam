@@ -13,3 +13,5 @@ interactive = false
 txt = false
 init = false
 path = "requirements-dev.txt"
+extra = []
+pre = false
