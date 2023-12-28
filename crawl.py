@@ -7,7 +7,6 @@ from time import sleep
 import requests
 from tqdm import tqdm
 
-
 # %%
 url = "https://data.calgary.ca/resource/k7p9-kppz.json"
 cameras = [
