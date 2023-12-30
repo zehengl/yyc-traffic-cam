@@ -1,4 +1,4 @@
 -r requirements.txt
 -r requirements-docs.txt
-jupyterlab==4.0.9
+jupyterlab==4.0.10
 pip-check-updates==0.23.0
