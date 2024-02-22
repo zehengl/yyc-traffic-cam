@@ -8,15 +8,21 @@ theme:
   font:
     text: Roboto
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: red
       accent: red
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
-    - scheme: slate
-      primary: red
-      accent: red
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: pink
+      accent: pink
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
@@ -32,19 +38,22 @@ plugins:
       auto_caption: true
   - minify:
       minify_html: true
-  - git-revision-date-localized:
-      type: timeago
-      enable_creation_date: true
+  - neoteroi.contribs:
+      contributors:
+        - email: imzehengl@gmail.com
+          image: https://avatars.githubusercontent.com/u/6238966?v=4
 markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.tilde
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/zehengl
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/in/zehengl
+extra_css:
+  - css/neoteroi-mkdocs.css
