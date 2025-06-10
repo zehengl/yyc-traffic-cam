@@ -1,6 +1,6 @@
 opencv-python==4.11.0.86
 pandas==2.3.0
-requests==2.32.3
+requests==2.32.4
 seaborn==0.13.2
 torch==2.7.1
 torchvision==0.22.1
