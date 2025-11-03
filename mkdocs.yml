@@ -3,8 +3,6 @@ nav:
   - Home: index.md
 theme:
   name: material
-  favicon: https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_Camera_cctv_technology_secure_surveillance-512.png
-  logo: https://cdn4.iconfinder.com/data/icons/internet-security-flat-2/32/Internet_Security_Camera_cctv_technology_secure_surveillance-512.png
   font:
     text: Roboto
   palette:
