@@ -5,4 +5,4 @@ seaborn==0.13.2
 torch==2.10.0
 torchvision==0.25.0
 tqdm==4.67.2
-ultralytics==8.4.9
+ultralytics==8.4.10
