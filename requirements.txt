@@ -4,5 +4,5 @@ requests==2.34.2
 seaborn==0.13.2
 torch==2.12.0
 torchvision==0.27.0
-tqdm==4.68.1
-ultralytics==8.4.62
+tqdm==4.68.2
+ultralytics==8.4.65
